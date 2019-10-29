@@ -1,5 +1,7 @@
 import os
 from flask import Flask, render_template
+from model import connect_to_db, DB_URI, db
+from model import Post, PostContent, Page, PageContent
 
 DIRECTORY = os.path.dirname(__file__)
 CLIENT = DIRECTORY + "/../client/build"
@@ -16,4 +18,5 @@ def index(path):
 
 
 if __name__ == "__main__":
+    connect_to_db(app, DB_URI)
     app.run(debug=True, host="0.0.0.0")
